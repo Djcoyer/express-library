@@ -30,7 +30,7 @@ export class BookRepository {
         let bookRef = this.col.doc(id);
         return bookRef.get()
             .then((doc) => {
-                if (!doc.reservationActive) {
+                if (!doc.exists) {
                     return null;
                 } else {
                     return this.getBookFromDoc(doc);
@@ -63,8 +63,7 @@ export class BookRepository {
     public async exists(id:string): Promise<boolean> {
         return await this.col.doc(id).get()
             .then(doc => {
-                console.log(doc.reservationActive);
-                return doc.reservationActive
+                return doc.exists
             });
     }
 

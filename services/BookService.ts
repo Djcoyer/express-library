@@ -3,7 +3,6 @@ import TYPES from "../constants/Types";
 import {BookRepository} from "../repositories/BookRepository";
 import Book from "../models/Book";
 import {generateError} from "./ErrorService";
-
 const uuid = require('uuid/v4');
 
 @injectable()
@@ -12,7 +11,8 @@ export class BookService {
     }
 
     public async findAll(): Promise<Book[]> {
-        return await this.bookRepository.findAll();
+        let books = await this.bookRepository.findAll();
+        return books;
     }
 
     public async findOne(id: string): Promise<Book> {
@@ -32,8 +32,7 @@ export class BookService {
     public async addBook(book: Book): Promise<Book> {
         this.validateBook(book);
         if (await this.bookRepository.existsByTitle(book.title)) {
-            let err = generateError("Book with title already reservationActive", 409);
-            throw err;
+            throw generateError("Book with title already reservationActive", 409);
         }
         book.id = uuid();
         return await this.bookRepository.putBook(book);
@@ -58,7 +57,6 @@ export class BookService {
             throw generateError("Book with specified ID does not exist", 404);
 
         try {
-            console.log("HERE");
             await this.bookRepository.delete(id);
         } catch (err) {
             console.error(err);

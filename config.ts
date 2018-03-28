@@ -9,3 +9,11 @@ export const serviceAccount = {
     // "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     // "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-uiptc%40firebase-library-194316.iam.gserviceaccount.com"
 };
+
+export const auth0Config = {
+    domain: "dcoyer-goals.auth0.com",
+    clientId: "PPk4hLnit5ynshfbSsrsy8wgbLzlJqpc",
+    clientSecret: "UkunYpteLJHYUloAKNPalb0XYeJ06j7xUM8HHYX3kiLM8BIlVN_GgYD13AOVyxUa",
+    audience:  "https://dcoyer-goals.auth0.com/api/v2/",
+    grant_type: "http://auth0.com/oauth/grant-type/password-realm"
+};

@@ -72,6 +72,18 @@ export class Book {
         this._title = value;
     }
 
+    public toJSON(){
+        return {
+            title: this.title,
+            author: this.author,
+            description: this.description,
+            id: this.id,
+            imgSrc: this.imgSrc,
+            publisher: this.publisher,
+            releaseDate: this.releaseDate
+        };
+    }
+
 
 }
 
